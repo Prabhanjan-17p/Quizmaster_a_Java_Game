@@ -18,17 +18,11 @@ Whether you're preparing for a technical interview or brushing up your coding co
 
 ---
 
-## 📸 Screenshots
-
-*Include screenshots of the application's main interface, quiz questions, and results page here.*
-
----
-
 ## 🎥 Demo Video
 
 *A demonstration video of the QuizMaster application is available below:*
 
-[![QuizMaster Demo](https://img.youtube.com/vi/your_video_id/0.jpg)](https://www.youtube.com/watch?v=your_video_id)
+https://github.com/user-attachments/assets/f041970c-7e90-4b1f-b370-a24c6a84ff17
 
 *Click the image above to watch the demo video on YouTube.*
 
