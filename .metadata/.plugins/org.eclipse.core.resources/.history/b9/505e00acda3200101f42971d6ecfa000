@@ -1,0 +1,97 @@
+package game;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+import java.util.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/startQuiz")
+public class QuizExamServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    Connection con;
+
+    public void init() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Display quiz questions
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try (PrintWriter out = response.getWriter()) {
+            response.setContentType("text/html");
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM INTERNSHIP_PROJECT_QNSANS WHERE QNSTYPE='Java Basics'");
+
+            out.println("<html><head><title>Java Quiz</title></head><body style='font-family:sans-serif;'>");
+            out.println("<h2>Java Basics Quiz</h2>");
+            out.println("<form method='POST' action='startQuiz'>");
+
+            int qnNo = 1;
+            while (rs.next()) {
+                String qnsId = rs.getString("QNSID");
+                String question = rs.getString("QNSNMAE");
+                String optA = rs.getString("OPTIONA");
+                String optB = rs.getString("OPTIONB");
+                String optC = rs.getString("OPTIONC");
+                String optD = rs.getString("OPTIOND");
+
+                out.println("<div style='margin-bottom:20px;'>");
+                out.println("<p><b>Q" + qnNo + ": " + question + "</b></p>");
+                out.println("<input type='radio' name='" + qnsId + "' value='A' required> " + optA + "<br>");
+                out.println("<input type='radio' name='" + qnsId + "' value='B'> " + optB + "<br>");
+                out.println("<input type='radio' name='" + qnsId + "' value='C'> " + optC + "<br>");
+                out.println("<input type='radio' name='" + qnsId + "' value='D'> " + optD + "<br>");
+                out.println("</div>");
+
+                qnNo++;
+            }
+
+            out.println("<input type='submit' value='Submit Answers' style='padding:10px 20px;'>");
+            out.println("</form></body></html>");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Evaluate quiz answers
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try (PrintWriter out = response.getWriter()) {
+            response.setContentType("text/html");
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT QNSID, QNSANS FROM INTERNSHIP_PROJECT_QNSANS WHERE QNSTYPE='Java Basics'");
+
+            int score = 0, total = 0;
+
+            while (rs.next()) {
+                String qnsId = rs.getString("QNSID");
+                String correctAns = rs.getString("QNSANS");
+
+                String userAns = request.getParameter(qnsId);
+                if (userAns != null && userAns.equalsIgnoreCase(correctAns)) {
+                    score++;
+                }
+                total++;
+            }
+
+            out.println("<html><head><title>Quiz Result</title></head><body>");
+            out.println("<h2>Your Quiz is Completed!</h2>");
+            out.println("<h3>Total Questions: " + total + "</h3>");
+            out.println("<h3>Your Score: " + score + " / " + total + "</h3>");
+            out.println("<a href='dashboard.html'>Back to Dashboard</a>");
+            out.println("</body></html>");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

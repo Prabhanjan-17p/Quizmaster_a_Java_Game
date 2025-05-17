@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | QuizMaster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #8ec5fc, #e0c3fc);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      max-width: 1100px;
+      width: 90%;
+      gap: 50px;
+      animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .left img {
+      width: 150px;
+      animation: float 3s ease-in-out infinite;
+      margin-left: 120px;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .right {
+      flex: 1;
+      color: #fff;
+      text-align: center;
+    }
+
+    .right h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .right h1 i {
+      color: #ffdd00;
+      margin-right: 10px;
+    }
+
+    .right span {
+      color: #ff65a3;
+    }
+
+    .right p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      background-color: #ff65a3;
+      color: #fff;
+      padding: 12px 28px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn:hover {
+      background-color: #ff4081;
+      transform: scale(1.05);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="./icons8-squid-game-triangle-guard-100.png" alt="Quiz Illustration" />
+    </div>
+    <div class="right">
+      <h1><i class="fas fa-question-circle"></i> Welcome to <span>QuizMaster</span></h1>
+      <p>Challenge yourself. Track your progress. Learn something new!</p>
+      <div class="buttons">
+        <a href="adminlogin.html" class="btn"><i class="fas fa-sign-in-alt"></i>Admin </a>
+        <a href="userogin.html" class="btn"><i class="fas fa-user-plus"></i> Login</a>
+        <a href="usersignup.html" class="btn"><i class="fas fa-user-plus"></i> Register</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

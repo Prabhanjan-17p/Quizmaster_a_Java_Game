@@ -1,0 +1,51 @@
+package game;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/verifyU")
+public class VerifyUser extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	Connection con;
+       
+    public VerifyUser() {
+        super();
+    }
+
+	public void init(ServletConfig config) throws ServletException {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void destroy() {
+		try {
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String userE = request.getParameter("userEmail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,196 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body and Layout */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #2d3e50;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00c7ae;
+    }
+
+    /* Main Dashboard */
+    .dashboard {
+      padding: 2rem;
+    }
+
+    .welcome-box {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .quiz-section,
+    .progress-section {
+      margin-bottom: 2rem;
+    }
+
+    .quiz-cards {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .quiz-card h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-card button {
+      margin-top: 1rem;
+      background-color: #00c7ae;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .quiz-card button:hover {
+      background-color: #019e8e;
+    }
+
+    .score-list {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      list-style: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #2d3e50;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .quiz-card input{
+    	display: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+	
+ <header class="navbar">
+    <h1 class="logo">QuizMaster</h1>
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Quizzes</a>
+      <a href="#">Past Results</a>
+      <a href="quizmaster.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section class="welcome-box">
+      <h2>Welcome, <%= (String)request.getAttribute("fName") %> 👋</h2>
+      <p>Ready to test your knowledge? Choose a quiz below!</p>
+    </section>
+
+    <section class="quiz-section">
+      <h3>Available Quizzes</h3>
+      <div class="quiz-cards">
+        <form action="startQuiz" method="GET">
+          <div class="quiz-card">
+            <h4>Java Basics1</h4>
+            <p>Questions | Easy</p>
+            <input value="Java" name="examType" />
+            <button type="submit">Start Quiz</button>
+          </div>
+        </form>
+        <form action="startQuiz" method="GET">
+          <div class="quiz-card">
+          <h4>HTML & CSS</h4>
+          <p>Questions | Medium</p>
+          <input value="ORACLE" name="examType" />
+          <button>Start Quiz</button>
+        </div>
+        </form>
+        
+        <form action="startQuiz" method="GET">
+          <div class="quiz-card">
+          <h4>Data Structures</h4>
+          <p>Questions | Hard</p>
+          <input value="DS" name="examType" />
+          <button>Start Quiz</button>
+        </div>
+        </form>
+        
+      </div>
+    </section>
+
+    <section class="progress-section">
+      <h3>Your Recent Scores</h3>
+      <ul class="score-list">
+        <li><strong>Java Basics:</strong> 80%</li>
+        <li><strong>Oracle:</strong> 90%</li>
+        <li><strong>Data Structures:</strong> 65%</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 QuizMaster | Pravanjan Amanta.</p>
+  </footer>
+
+</body>
+</html>

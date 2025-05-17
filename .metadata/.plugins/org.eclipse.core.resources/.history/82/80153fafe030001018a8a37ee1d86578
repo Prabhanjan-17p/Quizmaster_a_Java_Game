@@ -1,0 +1,63 @@
+package game;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/adlogin")
+public class AdminLogin extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       Connection con;
+   
+    public AdminLogin() {
+        super();
+    }
+
+	
+	public void init(ServletConfig config) throws ServletException {
+		try {
+        	Class.forName("oracle.jdbc.driver.OracleDriver"); 
+          con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void destroy() {
+		try {
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String adminName = request.getParameter("adminName");
+			String adminPass = request.getParameter("adminPassword");
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM INTERNSHIP_PROJECT_ADMIN WHERE USERNAME = ? AND PASSWORD = ?");
+			
+			ps.setString(1, adminName);
+			ps.setString(2, adminPass);
+			
+			ResultSet rs = ps.executeQuery();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

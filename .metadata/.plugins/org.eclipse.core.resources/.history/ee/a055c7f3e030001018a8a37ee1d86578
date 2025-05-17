@@ -1,0 +1,76 @@
+package game;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/adlogin")
+public class AdminLogin extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       Connection con;
+   
+    public AdminLogin() {
+        super();
+    }
+
+	
+	public void init(ServletConfig config) throws ServletException {
+		try {
+        	Class.forName("oracle.jdbc.driver.OracleDriver"); 
+          con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void destroy() {
+		try {
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String adminName = request.getParameter("adminName");
+			String adminPass = request.getParameter("adminPassword");
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM INTERNSHIP_PROJECT_ADMIN WHERE USERNAME = ? AND PASSWORD = ?");
+			
+			ps.setString(1, adminName);
+			ps.setString(2, adminPass);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			PrintWriter out = response.getWriter();
+			  if (rs.next()) {
+				     RequestDispatcher rd1 = request.getRequestDispatcher("welcome.html");
+		             rd1.include(request, response);
+		        } else {            
+		        	 out.println("<html><body style='background-color: #24686f;'>");
+		        	 RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		             rd.include(request, response);
+		             out.println("</body></html>");
+		        }
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

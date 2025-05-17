@@ -1,0 +1,109 @@
+package game;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Random;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class UserRegistration
+ */
+@WebServlet("/userreg")
+public class UserRegistration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	Connection con ;
+
+    public UserRegistration() {
+        super();
+    }
+
+	public void init(ServletConfig config) throws ServletException {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void destroy() {
+		try {
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    response.setContentType("text/html");
+	    PrintWriter out = response.getWriter();
+
+	    try {
+	        Random ran = new Random();
+	        int uid = ran.nextInt(9000);
+	        String UID = "U" + uid;
+
+	        String fullN = request.getParameter("fullName");
+	        String email = request.getParameter("userEmail");
+	        String uPass = request.getParameter("userPass");
+	        String uConPass = request.getParameter("userConPass");
+
+	        if (!uPass.equals(uConPass)) {
+	            out.println("<html><head><title>Registration Error</title><style>");
+	            out.println("body { font-family: 'Segoe UI'; background: #ffebee; text-align: center; padding-top: 100px; }");
+	            out.println(".box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }");
+	            out.println("h2 { color: #d32f2f; }");
+	            out.println("a.button { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #d32f2f; color: white; text-decoration: none; border-radius: 5px; }");
+	            out.println("</style></head><body>");
+	            out.println("<div class='box'><h2>❗ Password and Confirm Password do not match!</h2>");
+	            out.println("<a class='button' href='userregister.html'>🔁 Try Again</a></div></body></html>");
+	            return;
+	        }
+
+	        String insertData = "INSERT INTO INTERNSHIP_PROJECT_USER_REGISTRATION VALUES (?, ?, ?, ?)";
+	        PreparedStatement ps = con.prepareStatement(insertData);
+	        ps.setString(1, UID);
+	        ps.setString(2, fullN);
+	        ps.setString(3, email);
+	        ps.setString(4, uPass);
+
+	        int x = ps.executeUpdate();
+
+	        if (x > 0) {
+	            out.println("<html><head><title>Registration Success</title><style>");
+	            out.println("body { font-family: 'Segoe UI'; background: #e8f5e9; text-align: center; padding-top: 100px; }");
+	            out.println(".box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }");
+	            out.println("h2 { color: #388e3c; }");
+	            out.println("a.button { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #388e3c; color: white; text-decoration: none; border-radius: 5px; }");
+	            out.println("</style></head><body>");
+	            out.println("<div class='box'><h2>✅ Registration Successful!</h2>");
+	            out.println("<p>You can now login with your credentials.</p>");
+	            out.println("<a class='button' href='userlogin.html'>🔐 Go to Login</a></div></body></html>");
+	        } else {
+	            out.println("<html><head><title>Registration Failed</title><style>");
+	            out.println("body { font-family: 'Segoe UI'; background: #fff3e0; text-align: center; padding-top: 100px; }");
+	            out.println(".box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }");
+	            out.println("h2 { color: #f57c00; }");
+	            out.println("a.button { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #f57c00; color: white; text-decoration: none; border-radius: 5px; }");
+	            out.println("</style></head><body>");
+	            out.println("<div class='box'><h2>⚠️ Something went wrong during registration!</h2>");
+	            out.println("<a class='button' href='userregister.html'>🔁 Try Again</a></div></body></html>");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        out.println("<h3>⚠️ Server error occurred. Please try again later.</h3>");
+	    }
+	}
+
+
+}

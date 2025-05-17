@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create/Edit Quiz</title>
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #00c7ae, #006d77);
+      padding: 2rem;
+    }
+
+    /* Container */
+    .quiz-container {
+      max-width: 750px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Form Headings */
+    .quiz-form h2 {
+      text-align: center;
+      color: #006d77;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-form h3 {
+      margin-bottom: 1rem;
+      color: #00c7ae;
+    }
+
+    /* Labels & Inputs */
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f4f6f9;
+      font-size: 1rem;
+    }
+
+    /* Buttons */
+    .add-question {
+      display: inline-block;
+      background-color: transparent;
+      border: 2px dashed #00c7ae;
+      color: #00c7ae;
+      font-weight: bold;
+      padding: 0.6rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-question:hover {
+      background-color: #00c7ae;
+      color: white;
+    }
+
+    .save-quiz {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #006d77;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .save-quiz:hover {
+      background-color: #00565e;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="quiz-container">
+    <form class="quiz-form">
+      <h2>Create / Edit Quiz 📝</h2>
+
+      <label for="quiz-title">Quiz Title</label>
+      <input type="text" id="quiz-title" placeholder="Enter quiz title" required />
+
+      <div class="question-block">
+        <h3>Question 1</h3>
+        <label>Question</label>
+        <input type="text" placeholder="Type the question here" required />
+
+        <label>Option A</label>
+        <input type="text" placeholder="Enter option A" required />
+
+        <label>Option B</label>
+        <input type="text" placeholder="Enter option B" required />
+
+        <label>Option C</label>
+        <input type="text" placeholder="Enter option C" required />
+
+        <label>Option D</label>
+        <input type="text" placeholder="Enter option D" required />
+
+        <label>Correct Answer</label>
+        <select required>
+          <option value="" disabled selected>Select correct answer</option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </div>
+
+      <button type="button" class="add-question">+ Add Another Question</button>
+      <button type="submit" class="save-quiz">💾 Save Quiz</button>
+    </form>
+  </div>
+</body>
+
+</html>

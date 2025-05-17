@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #006d77, #00c7ae);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Admin Wrapper */
+        .admin-login-wrapper {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Styling */
+        .admin-login-card h2 {
+            text-align: center;
+            color: #006d77;
+            margin-bottom: 0.4rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.65rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f4f6f9;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            background-color: #006d77;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005b63;
+        }
+
+        .admin-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-login-wrapper">
+        <form class="admin-login-card" action="adlogin" method="POST" >
+            <h2>Admin Panel 🔐</h2>
+            <p class="subtitle">Login with your admin credentials</p>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Admin username" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required />
+
+            <button type="submit">Login as Admin</button>
+
+            <div class="admin-note">
+                <p>This section is restricted to authorized personnel only.</p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+-----------------------------==================== TABLE: INTERNSHIP_PROJECT_QNSANS ====================--------------------
+CREATE TABLE INTERNSHIP_PROJECT_QNSANS (
+      QNSID     VARCHAR2(20) PRIMARY KEY,
+      QNSANS    VARCHAR2(1) NOT NULL,        
+      QNSNMAE   VARCHAR2(1000),              
+      QNSTYPE   VARCHAR2(100),               
+      OPTIONA   VARCHAR2(500),               
+      OPTIONB   VARCHAR2(500),               
+      OPTIONC   VARCHAR2(500),               
+      OPTIOND   VARCHAR2(500)                
+);
+
+| QNSID | Answer | Question                                                     | Option A                | Option B               | Option C             | Option D             |
+| ----- | ------ | ------------------------------------------------------------ | ----------------------- | ---------------------- | -------------------- | -------------------- |
+| Q101  | B      | What is the size of int variable in Java?                    | 8 bit                   | 32 bit                 | 64 bit               | 16 bit               |
+| Q102  | A      | Which keyword is used to inherit a class in Java?            | extends                 | implements             | import               | inherit              |
+| Q103  | C      | Which method is the entry point of a Java program?           | start()                 | run()                  | main()               | init()               |
+| Q104  | A      | Which keyword is used to define a constant in Java?          | final                   | static                 | const                | constant             |
+| Q105  | D      | Which operator is used for object comparison in Java?        | ==                      | =                      | equals()             | == and equals()      |
+| Q106  | C      | Which access modifier makes a method visible to all classes? | private                 | protected              | public               | default              |
+| Q107  | B      | Which of the following is not a primitive data type?         | int                     | String                 | boolean              | char                 |
+| Q108  | A      | Which of these is used to handle exceptions in Java?         | try-catch               | finally-throw          | error block          | exception{}          |
+| Q109  | D      | What is JVM in Java?                                         | Java Variable Method    | Java Verified Machine  | Java Visual Machine  | Java Virtual Machine |
+| Q110  | C      | Which loop is guaranteed to execute at least once?           | for                     | while                  | do-while             | foreach              |
+| Q111  | A      | What does the "static" keyword mean in Java?                 | Shared across instances | Method overloading     | Final class          | Abstract class       |
+| Q112  | B      | Which exception is thrown when a class is not found?         | IOException             | ClassNotFoundException | NullPointerException | SQLException         |
+| Q113  | C      | Which method is used to start a thread in Java?              | execute()               | init()                 | start()              | runThread()          |
+| Q114  | A      | Which keyword is used to prevent method overriding in Java?  | final                   | static                 | abstract             | protected            |
+| Q115  | D      | Which of the following is a marker interface in Java?        | Runnable                | Serializable           | Comparable           | Cloneable            |
+
+| QNSID  | Answer | Question                                                         | Option A                       | Option B                           | Option C             | Option D                   |
+| ------ | ------ | ---------------------------------------------------------------- | ------------------------------ | ---------------------------------- | -------------------- | -------------------------- |
+| QORA01 | C      | Which SQL command is used to remove a table from the database?   | DELETE                         | REMOVE                             | DROP                 | TRUNCATE                   |
+| QORA02 | A      | Which function returns the number of rows in a query result?     | COUNT()                        | ROWNUM()                           | LENGTH()             | SUM()                      |
+| QORA03 | B      | Which keyword is used to prevent duplicate rows in a result set? | UNIQUE                         | DISTINCT                           | ONLY                 | NO\_DUPLICATE              |
+| QORA04 | C      | What is the default port number for Oracle Database?             | 1522                           | 1433                               | 1521                 | 8080                       |
+| QORA05 | A      | Which data type is used to store large binary files?             | BLOB                           | VARCHAR                            | CLOB                 | LONG                       |
+| QORA06 | D      | What is the max length of VARCHAR2 in Oracle 12c?                | 2000                           | 8000                               | 16383                | 32767                      |
+| QORA07 | C      | Which clause is used to sort query results?                      | GROUP BY                       | HAVING                             | ORDER BY             | SORT                       |
+| QORA08 | B      | What does the NVL function do in Oracle SQL?                     | Returns NULL if a value exists | Replaces NULL with a specified val | Returns TRUE if NULL | Converts a value to number |
+| QORA09 | A      | Which command is used to permanently save changes in Oracle?     | COMMIT                         | ROLLBACK                           | SAVEPOINT            | FLUSH                      |
+| QORA10 | D      | What is a synonym in Oracle?                                     | A column alias                 | Alternate name for a view          | A data type          | Alternate DB object name   |
+| QORA11 | B      | Which join returns rows with no matches in the other table?      | INNER JOIN                     | OUTER JOIN                         | CROSS JOIN           | SELF JOIN                  |
+| QORA12 | A      | Which PL/SQL block handles exceptions?                           | EXCEPTION                      | ERROR                              | CATCH                | THROW                      |
+| QORA13 | C      | Which data dictionary view lists all user tables?                | ALL\_TABLES                    | DBA\_TABLES                        | USER\_TABLES         | TABLES\_VIEW               |
+| QORA15 | B      | What is a trigger in Oracle?                                     | A query                        | Auto procedure on event            | A constraint         | A type of cursor           |
+
+| QNSID | Answer | Question                                               | Option A    | Option B    | Option C    | Option D         |
+| ----- | ------ | ------------------------------------------------------ | ----------- | ----------- | ----------- | ---------------- |
+| DS101 | A      | Which data structure uses LIFO?                        | Stack       | Queue       | Array       | Linked List      |
+| DS102 | C      | Which of the following is a non-linear data structure? | Array       | Stack       | Tree        | Queue            |
+| DS103 | B      | Time complexity of binary search in sorted array?      | O(n)        | O(log n)    | O(n log n)  | O(n²)            |
+| DS104 | D      | Best data structure for priority queue?                | Stack       | Array       | Linked List | Heap             |
+| DS105 | A      | DFS traversal uses which structure?                    | Stack       | Queue       | Hash Table  | Heap             |
+| DS106 | B      | Suitable for undo operations?                          | Queue       | Stack       | Tree        | Graph            |
+| DS107 | C      | Inorder traversal gives BST sorted output?             | Preorder    | Postorder   | Inorder     | Level order      |
+| DS108 | D      | Which is not a linked list type?                       | Singly      | Doubly      | Circular    | Hash Linked List |
+| DS109 | A      | Worst-case time for Quick Sort?                        | O(n²)       | O(log n)    | O(n)        | O(n log n)       |
+| DS110 | C      | Not possible in O(1) for singly linked list?           | Insert head | Delete head | Insert tail | Traverse         |
+| DS111 | B      | Data structure used in BFS?                            | Stack       | Queue       | Heap        | Tree             |
+| DS112 | A      | Which data structure uses FIFO?                        | Queue       | Stack       | Heap        | Graph            |
+| DS113 | D      | Max-heap parent is always \_\_\_\_ than children       | Equal       | Smaller     | Random      | Greater          |
+| DS115 | C      | Height of complete binary tree with n nodes?           | O(n)        | O(n log n)  | O(log n)    | O(1)             |
+
+
+----------------------------=========== TABLE: INTERNSHIP_PROJECT_USER_REGISTRATION ===========--------------------------------------------
+CREATE TABLE INTERNSHIP_PROJECT_USER_REGISTRATION (
+    USER_ID    VARCHAR2(20) PRIMARY KEY,
+    FULL_NAME  VARCHAR2(100) NOT NULL,
+    EMAIL      VARCHAR2(100) UNIQUE NOT NULL,
+    PASSWORD   VARCHAR2(100) NOT NULL
+);
+
+
+SQL> SELECT * FROM INTERNSHIP_PROJECT_USER_REGISTRATION;
+| USER_ID  | FULL_NAME         | EMAIL                                                     | PASSWORD  |
+| -------- | ----------------- | --------------------------------------------------------- | --------- |
+| U7786    | Asa               | [asa.asd@gmail.com]                                       | kanha123  |
+| U369     | Asmin Rana        | [asmin@gmail.com]                                         | asmin123  |
+| U001     | Prabhanjan Amanta | [prabhanjan@gmail.com]                                    | pass123   |
+| U002     | Ritika Sharma     | [ritika.sharma@gmail.com]                                 | secure456 |
+| U003     | Amit Kumar        | [amit.kumar@gmail.com]                                    | quiz789   |
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------============ TABLE: INTERNSHIP_PROJECT_ADMIN ============-----------------------------------
+CREATE TABLE INTERNSHIP_PROJECT_ADMIN (
+    ADMIN_ID   NUMBER PRIMARY KEY,
+    USERNAME   VARCHAR2(50) NOT NULL,
+    PASSWORD   VARCHAR2(255) NOT NULL,
+    EMAIL      VARCHAR2(100) NOT NULL,
+    CREATED_AT DATE
+);
+
+SQL> SELECT * FROM INTERNSHIP_PROJECT_ADMIN;
+
+| ADMIN_ID  | USERNAME    | PASSWORD   | EMAIL                                                               | CREATED_AT |
+| --------- | ----------- | ---------- | ------------------------------------------------------------------- | ----------- |
+| 1         | admin_01    | admin@123  | [kanha.admin@example.com](mailto:kanha.admin@example.com)           | 14-MAY-25   |
+| 2         | admin_02    | admin@456  | [prabhanjan.admin@example.com](mailto:prabhanjan.admin@example.com) | 14-MAY-25   |
+| 3         | admin_root  | root@789   | [root.admin@example.com](mailto:root.admin@example.com)             | 14-MAY-25   |
+
+
+--------------------------------------------------------------------------------------------------------------------

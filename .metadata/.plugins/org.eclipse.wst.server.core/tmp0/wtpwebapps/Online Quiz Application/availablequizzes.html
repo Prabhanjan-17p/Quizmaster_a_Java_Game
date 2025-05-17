@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuizMaster | Quizzes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .quiz-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quiz-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #222;
+        }
+
+        .quiz-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .start-btn {
+            background-color: #4e73df;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #3c5ccf;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .quiz-card input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📚 Available Quizzes</h1>
+
+    <div class="quiz-grid">
+        <form action="startQuiz" method="GET">
+
+
+            <div class="quiz-card">
+                <div class="quiz-title">Java Basics</div>
+                <div class="quiz-desc">Test your knowledge on Java fundamentals including OOP, keywords, and syntax.
+                </div>
+                <input value="Java" name="examType" />
+                <a href="quiz.html?quiz=java"><button class="start-btn">Start Quiz</button></a>
+            </div>
+        </form>
+
+        <form action="startQuiz" method="GET">
+            <div class="quiz-card">
+                <div class="quiz-title">SQL & Oracle</div>
+                <div class="quiz-desc">Challenge yourself with SQL commands, joins, data types, and Oracle concepts.
+                </div>
+                <input value="ORACLE" name="examType" />
+                <a href="quiz.html?quiz=sql"><button class="start-btn">Start Quiz</button></a>
+            </div>
+        </form>
+
+        <form action="startQuiz" method="GET">
+            <div class="quiz-card">
+                <div class="quiz-title">Data Structures</div>
+                <div class="quiz-desc">Dive into stacks, queues, trees, and complexity with this DS-focused quiz.</div>
+                <input value="DS" name="examType" />
+                <a href="quiz.html?quiz=ds"><button class="start-btn">Start Quiz</button></a>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        © 2025 QuizMaster | Crafted with passion by Prabhanjan Amanta.
+    </footer>
+
+</body>
+
+</html>
